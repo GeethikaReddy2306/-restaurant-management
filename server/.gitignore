@@ -4,10 +4,6 @@ node_modules/
 # Environment Variables
 .env
 
-# Build Files
-dist/
-build/
-
 # Logs
 *.log
 npm-debug.log*
@@ -22,12 +18,18 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Cache
-.cache/
-.parcel-cache/
-
-# Vite
-vite.svg
-
 # Coverage
 coverage/
+
+# Runtime Files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary Files
+tmp/
+temp/
+
+# Uploads (if storing locally)
+uploads/
