@@ -19,11 +19,12 @@ const server = http.createServer(app);
 // Initialize Socket.io
 initSocket(server);
 
-// Connect to Database
-connectDB();
+connectDB()
+  .then(() => console.log("DB Connected"))
+  .catch(err => console.error("DB Error:", err));
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
 app.get('/',(req,res)=>{
   res.json({activeStatus:true,error:false});
@@ -45,5 +46,5 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal Server Error' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
